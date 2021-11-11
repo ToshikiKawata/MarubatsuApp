@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		976EB1B62738305A002E18A2 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976EB1B52738305A002E18A2 /* CreateViewController.swift */; };
 		97BAEF362735FA930060A049 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BAEF352735FA930060A049 /* AppDelegate.swift */; };
 		97BAEF382735FA930060A049 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BAEF372735FA930060A049 /* SceneDelegate.swift */; };
 		97BAEF3A2735FA930060A049 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BAEF392735FA930060A049 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		976EB1B52738305A002E18A2 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		97BAEF322735FA930060A049 /* MarubatsuApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarubatsuApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97BAEF352735FA930060A049 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97BAEF372735FA930060A049 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				97BAEF372735FA930060A049 /* SceneDelegate.swift */,
 				97BAEF392735FA930060A049 /* ViewController.swift */,
 				97BAEF3B2735FA930060A049 /* Main.storyboard */,
+				976EB1B52738305A002E18A2 /* CreateViewController.swift */,
 				97BAEF3E2735FA950060A049 /* Assets.xcassets */,
 				97BAEF402735FA950060A049 /* LaunchScreen.storyboard */,
 				97BAEF432735FA950060A049 /* Info.plist */,
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				976EB1B62738305A002E18A2 /* CreateViewController.swift in Sources */,
 				97BAEF3A2735FA930060A049 /* ViewController.swift in Sources */,
 				97BAEF362735FA930060A049 /* AppDelegate.swift in Sources */,
 				97BAEF382735FA930060A049 /* SceneDelegate.swift in Sources */,
