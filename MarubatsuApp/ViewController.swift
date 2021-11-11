@@ -8,31 +8,47 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var questionLabel: UILabel!
     
     var currentQuestionNum: Int = 0
+    var questions: [[String: Any]] = []
     
-    let questions: [[String: Any]] = [
-        [
-                    "question": "iPhoneアプリを開発する統合環境はZcodeである",
-                    "answer": false
-                ],
-                [
-                    "question": "Xcode画面の右側にはユーティリティーズがある",
-                    "answer": true
-                ],
-                [
-                    "question": "UILabelは文字列を表示する際に利用する",
-                    "answer": true
-                ]
-    ]
+    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var noButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: "add") != nil {
+            questions = userDefaults.object(forKey: "add") as! [[String: Any]]
+        }
         showQuestion()
+        isButtonEnable()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: "add") != nil {
+            questions = userDefaults.object(forKey: "add") as! [[String: Any]]
+        }
+        showQuestion()
+        isButtonEnable()
+    }
+    
+    func isButtonEnable() {
+        if questions.count == 0 {
+            yesButton.isEnabled = false
+            yesButton.alpha = 0.3
+            noButton.isEnabled = false
+            noButton.alpha = 0.3
+        } else {
+            yesButton.isEnabled = true
+            yesButton.alpha = 1
+            noButton.isEnabled = true
+            noButton.alpha = 1
+        }
+    }
     
     @IBAction func tappedNoButton(_ sender: Any) {
         checkAnswer(yourAnswer: false)
@@ -43,16 +59,20 @@ class ViewController: UIViewController {
     }
     
     func showQuestion() {
-            let question = questions[currentQuestionNum]
-
+        if questions.isEmpty == true {
+            questionLabel.text = "問題がありません。問題文を作りましょう。"
+        } else {
+            var question = questions[currentQuestionNum]
             if let que = question["question"] as? String {
                 questionLabel.text = que
             }
         }
- 
+    }
+    
     func checkAnswer(yourAnswer: Bool) {
-            let question = questions[currentQuestionNum]
-
+        
+        let question = questions[currentQuestionNum]
+        if questions.isEmpty != true {
             if let ans = question["answer"] as? Bool {
                 if yourAnswer == ans {
                     // 正解
@@ -63,6 +83,9 @@ class ViewController: UIViewController {
                     // 不正解
                     showAlert(message: "不正解…")
                 }
+            } else {
+                print("答えが入っていません")
+                return
             }
             // currentQuestionNumの値が問題数以上だったら最初の問題に戻す
             if currentQuestionNum >= questions.count {
@@ -72,11 +95,12 @@ class ViewController: UIViewController {
             // 正解であれば次の問題が、不正解であれば同じ問題が再表示されます。
             showQuestion()
         }
+    }
     func showAlert(message: String) {
-            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-            let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
-            alert.addAction(close)
-            present(alert, animated: true, completion: nil)
-        }
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
+        alert.addAction(close)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
