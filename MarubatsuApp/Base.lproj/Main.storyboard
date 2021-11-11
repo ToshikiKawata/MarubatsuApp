@@ -83,7 +83,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="noButton" destination="obE-qu-PwF" id="aIp-GQ-XQt"/>
                         <outlet property="questionLabel" destination="4iA-kR-SPe" id="GQR-J7-cZR"/>
+                        <outlet property="yesButton" destination="7Nh-AV-GQr" id="27m-tG-1S7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -109,8 +111,8 @@
                                     <constraint firstAttribute="height" constant="45" id="aSx-cj-qO0"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="○"/>
                                     <segment title="✗"/>
+                                    <segment title="○"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1J-VR-Iu6">

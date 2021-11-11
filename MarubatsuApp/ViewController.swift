@@ -14,9 +14,17 @@ class ViewController: UIViewController {
     var currentQuestionNum: Int = 0
     var questions: [[String: Any]] = []
     
+    @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var noButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: "add") != nil {
+            questions = userDefaults.object(forKey: "add") as! [[String: Any]]
+        }
         showQuestion()
+        isButtonEnable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +33,21 @@ class ViewController: UIViewController {
             questions = userDefaults.object(forKey: "add") as! [[String: Any]]
         }
         showQuestion()
+        isButtonEnable()
+    }
+    
+    func isButtonEnable() {
+        if questions.count == 0 {
+            yesButton.isEnabled = false
+            yesButton.alpha = 0.3
+            noButton.isEnabled = false
+            noButton.alpha = 0.3
+        } else {
+            yesButton.isEnabled = true
+            yesButton.alpha = 1
+            noButton.isEnabled = true
+            noButton.alpha = 1
+        }
     }
     
     @IBAction func tappedNoButton(_ sender: Any) {
